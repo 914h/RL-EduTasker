@@ -1,0 +1,14 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+      "outDir": "./dist",
+      "rootDir": "./src",
+      "baseUrl": ".",
+      "paths": {
+        "@/*": ["./src/*"]
+      }
+    },
+    "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "src/layouts/ui/AppSidebar.jsx", "src/components/dark-mode/theme-provider.jsx"],
+    "exclude": ["node_modules", "dist"]
+  }
+  
