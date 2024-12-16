@@ -1,13 +1,15 @@
 import { cn } from "@/lib/utils"
 import {Button} from "../../../components/ui/button.tsx";
-import { Link } from "react-router-dom";
-import { ADMIN_MANAGE_PARENTS_ROUTE, ADMIN_MANAGE_STUDENTS_ROUTE } from "../../../router/index.jsx";
-import { BookCheck, BookOpenText, BookPlus, ContactIcon, ContactRoundIcon, GraduationCap, UsersRound } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
+import { ADMIN_DASHBOARD_ROUTE, ADMIN_MANAGE_PARENTS_ROUTE, ADMIN_MANAGE_STUDENTS_ROUTE } from "../../../router/index.jsx";
+import { BookCheck, BookOpenText, BookPlus, ContactIcon, ContactRoundIcon, GraduationCap, LayoutPanelLeft, UsersRound } from "lucide-react";
+import { useEffect, useState } from "react";
 export function AdminAppSidebar({ className}) {
-    const playlists = [
-        'Playlist 1',
-        'Playlist 2',
-    ]
+    const location = useLocation();
+    const [ActiveRoute, setActiveRoute] = useState(location.pathname)
+    useEffect(() => {
+        setActiveRoute(location.pathname);
+    }, [location]);
     return (
         <div className={cn("", className)}>
             <div >
@@ -15,22 +17,42 @@ export function AdminAppSidebar({ className}) {
                     <h2 className="mb-2 px-4 text-lg font-semibold tracking-tight">
                         Administration
                     </h2>
+                    
+                    <div className="space-y-1">
+            <Link to={ADMIN_DASHBOARD_ROUTE}>
+                <Button
+                    variant={ActiveRoute === ADMIN_DASHBOARD_ROUTE ? "secondary" : "ghost"}
+                    className="w-full justify-start"
+                >
+                    <LayoutPanelLeft className={'mx-1'} />
+                    Dashboard
+                </Button>
+            </Link>
+        </div>
                     <div className="space-y-1">
                         <Link to={ADMIN_MANAGE_PARENTS_ROUTE}>
-                        <Button variant="secondary" className="w-full justify-start">
+                        <Button
+                        variant={ActiveRoute === ADMIN_MANAGE_PARENTS_ROUTE ? "secondary" : "ghost"}
+                        className="w-full justify-start"
+                        onClick={() => setActiveRoute(ADMIN_MANAGE_PARENTS_ROUTE)}
+                    >
                         <UsersRound />Manage Student Parents
                         </Button>
                             </Link>
                     </div>
                     <div className="space-y-1">
                         <Link to={ADMIN_MANAGE_STUDENTS_ROUTE}>
-                        <Button variant="ghost" className="w-full justify-start">
+                        <Button
+                        variant={ActiveRoute === ADMIN_MANAGE_STUDENTS_ROUTE ? "secondary" : "ghost"}
+                        className="w-full justify-start"
+                        onClick={() => setActiveRoute(ADMIN_MANAGE_STUDENTS_ROUTE)}
+                    >
                         <BookCheck />Manage Students
                         </Button>
                             </Link>
                     </div>
                     <div className="space-y-1">
-                        <Link to={ADMIN_MANAGE_PARENTS_ROUTE}>
+                        <Link to={''}>
                         <Button variant="ghost" className="w-full justify-start">
                         <UsersRound />Manage Exams
                         </Button>

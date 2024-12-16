@@ -1,14 +1,15 @@
 import {Link, Outlet, useNavigate} from 'react-router-dom'
 import '../../index.css'
 import Logo from '../../assets/logo/logo.png'
-import { LOGIN_ROUTE, STUDENT_DASHBOARD_ROUTE } from '../../router'
+import { LOGIN_ROUTE, STUDENT_DASHBOARD_ROUTE, TEACHER_DASHBOARD_ROUTE } from '../../router'
 import { useUserContext } from '../../context/StudentContext'
 import { StudentDropdownmenu } from '../ui/StudentUI/StudentDropdownmenu'
 import UserApi from '../../services/api/UserApi'
 import { useEffect, useState } from 'react'
-import { GaugeIcon } from 'lucide-react'
+import { GaugeIcon, LayoutPanelLeft } from 'lucide-react'
 import { ModeToggle } from '../../components/dark-mode/mode-toggle'
 import { TeacherSideBar } from '../ui/TeacherUI/TeacherSidebar'
+import { Button } from '../../components/ui/button'
 export default function TeacherLayout(){
     const navigate = useNavigate()
     const [isLoading, setIsLoading] = useState(true)
@@ -44,7 +45,8 @@ export default function TeacherLayout(){
             <div>
                 <ul className="flex text-white place-items-center">
                     <li className="ml-5 px-2 py-1">
-                        <Link className={'flex'} to={STUDENT_DASHBOARD_ROUTE}><GaugeIcon className={'mx-1'} />Dashboard</Link>
+                        <Link className={'flex'} to={TEACHER_DASHBOARD_ROUTE}><Button><LayoutPanelLeft className={'mx-1'} /> Dashboard</Button></Link>
+
                     </li>
                     <li className="ml-5 px-2 py-1">
                         <StudentDropdownmenu/>

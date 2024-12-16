@@ -14,10 +14,7 @@ class SemestreSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('semestres')->insert([
-            ['name' => 'Semester 1'],
-            ['name' => 'Semester 2'],
-        ]);
+        
     }
     
 }

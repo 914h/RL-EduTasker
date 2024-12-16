@@ -16,7 +16,7 @@ export default function StudentContext({children}) {
     const [Authenticated, _setAuthenticated] = useState('true' === window.localStorage.getItem('AUTHENTICATED'))
     const login = async (email,password) => {
         return UserApi.login(email,password)
-    }   
+    }
     const logout = () => {
         setUser({})
         setAuthenticated(false)
@@ -27,6 +27,7 @@ export default function StudentContext({children}) {
     }
     const setToken = (token) => {
         window.localStorage.setItem('token', token);
+
     }
         return <>
             <StudentStateContext.Provider value={{

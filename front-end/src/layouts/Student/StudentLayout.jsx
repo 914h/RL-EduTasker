@@ -6,11 +6,10 @@ import { useUserContext } from '../../context/StudentContext'
 import { StudentDropdownmenu } from '../ui/StudentUI/StudentDropdownmenu'
 import UserApi from '../../services/api/UserApi'
 import { useEffect, useState } from 'react'
-import { AppSidebar } from '../ui/AppSidebar'
-import { SidebarProvider, SidebarTrigger } from '../../components/ui/sidebar'
-import { GaugeIcon } from 'lucide-react'
+import { GaugeIcon, LayoutPanelLeft } from 'lucide-react'
 import { ModeToggle } from '../../components/dark-mode/mode-toggle'
 import { StudentSidebar } from '../ui/StudentUI/StudentSidebar'
+import { Button } from '../../components/ui/button'
 export default function StudentLayout(){
     const navigate = useNavigate()
     const [isLoading, setIsLoading] = useState(true)
@@ -46,7 +45,9 @@ export default function StudentLayout(){
             <div>
                 <ul className="flex text-white place-items-center">
                     <li className="ml-5 px-2 py-1">
-                        <Link className={'flex'} to={STUDENT_DASHBOARD_ROUTE}><GaugeIcon className={'mx-1'} />Dashboard</Link>
+                        <Link className={'flex'} to={STUDENT_DASHBOARD_ROUTE}><Button><LayoutPanelLeft className={'mx-1'} /> Dashboard</Button></Link>
+                       
+
                     </li>
                     <li className="ml-5 px-2 py-1">
                         <StudentDropdownmenu/>
