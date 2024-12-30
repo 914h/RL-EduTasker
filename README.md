@@ -38,4 +38,4 @@
 ---
 
 Simplify school management with **EDUTASKER** today! 🌟
->>>>>>> 3434c5d2f4fea6a0f756d91216499be0f09f8cf1
+![image](https://github.com/user-attachments/assets/9342edf8-f25a-4cb2-b231-af2b10da0f19)
